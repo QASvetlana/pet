@@ -12,17 +12,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class MainPagesTests extends TestBase {
-    @Test
-    @Description("works only for web version, does not work for mobile version of  site")
-    @DisplayName("Common page elements for PS")
-    void cityHintTest() {
-        step("Open url", () ->
-                open(""));
-        step("check city hint", () -> {
-            $(".cityHint_hint__city__SI4-r").shouldBe(visible);
-        });
-    }
-
+    /* @Test
+     @Description("works only for web version, does not work for mobile version of  site")
+     @DisplayName("Common page elements for PS")
+     void cityHintTest() {
+         step("Open url", () ->
+                 open(""));
+         step("check city hint", () -> {
+             $(".cityHint_hint__city__SI4-r").shouldBe(visible);
+         });
+     }
+ */
     @Test
     @Description("works only for web version, does not work for mobile version of  site")
     @DisplayName("Page title should have header text")
