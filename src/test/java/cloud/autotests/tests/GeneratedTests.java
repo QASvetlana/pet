@@ -5,8 +5,8 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.title;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -14,10 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class GeneratedTests extends TestBase {
     @Test
     @Description("Soon to be implemented by you (or QA.GURU engineers)")
-    @DisplayName("example")
+    @DisplayName("Common page elements for PS")
     void generatedTest() {
         step("Open https://www.petshop.ru/", () -> {
-            step("// todo: just add selenium action");
+            open("https://www.petshop.ru/");
+        });
+
+        step("check city hint", () -> {
+            $(".cityHint_hint__city__SI4-r").shouldBe(visible);
         });
     }
 
@@ -26,7 +30,7 @@ public class GeneratedTests extends TestBase {
     @DisplayName("Page title should have header text")
     void titleTest() {
         step("Open url 'https://www.petshop.ru/'", () ->
-            open("https://www.petshop.ru/"));
+                open("https://www.petshop.ru/"));
 
         step("Page title should have text 'Товары для животных, зоотовары онлайн, корма для домашних животных купить в интернет-магазине Petshop.ru'", () -> {
             String expectedTitle = "Товары для животных, зоотовары онлайн, корма для домашних животных купить в интернет-магазине Petshop.ru";
@@ -41,7 +45,7 @@ public class GeneratedTests extends TestBase {
     @DisplayName("Page console log should not have errors")
     void consoleShouldNotHaveErrorsTest() {
         step("Open url 'https://www.petshop.ru/'", () ->
-            open("https://www.petshop.ru/"));
+                open("https://www.petshop.ru/"));
 
         step("Console logs should not contain text 'SEVERE'", () -> {
             String consoleLogs = DriverUtils.getConsoleLogs();
