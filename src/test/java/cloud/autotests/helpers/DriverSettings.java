@@ -15,7 +15,7 @@ public class DriverSettings {
         Configuration.browserVersion = Project.config.browserVersion();
         Configuration.browserSize = Project.config.browserSize();
         Configuration.baseUrl = "https://www.petshop.ru/";
-        Configuration.timeout = 8000;
+        Configuration.timeout = 6000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions chromeOptions = new ChromeOptions();
