@@ -1,6 +1,7 @@
 package cloud.autotests.tests;
 
 import cloud.autotests.helpers.DriverUtils;
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ public class ConsoleLogTest extends TestBase {
 
 
     @Test
+    @AllureId("7422")
     @Description("works only for web version, does not work for mobile version of  site")
     @DisplayName("Page console log should not have errors")
     void consoleShouldNotHaveErrorsTest() {

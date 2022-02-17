@@ -1,6 +1,7 @@
 package cloud.autotests.tests;
 
 import cloud.autotests.helpers.DriverUtils;
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SearchTests extends TestBase {
     @Test
+    @AllureId("7426")
     @Description("works only for web version, does not work for mobile version of  site")
     @DisplayName("Common page elements for PS")
     void searchTest() {
@@ -28,6 +30,7 @@ public class SearchTests extends TestBase {
     }
 
     @Test
+    @AllureId("7424")
     @Description("works only for web version, does not work for mobile version of  site")
     @DisplayName("Common page elements for PS")
     void searchEmptyTest() {

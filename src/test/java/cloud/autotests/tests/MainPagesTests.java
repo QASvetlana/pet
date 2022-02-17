@@ -1,6 +1,7 @@
 package cloud.autotests.tests;
 
 import cloud.autotests.helpers.DriverUtils;
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class MainPagesTests extends TestBase {
     @Test
+    @AllureId("7425")
     @Description("works only for web version, does not work for mobile version of  site")
     @DisplayName("Common page elements for PS")
     void cityHintTest() {
@@ -24,6 +26,7 @@ public class MainPagesTests extends TestBase {
     }
 
     @Test
+    @AllureId("7423")
     @Description("works only for web version, does not work for mobile version of  site")
     @DisplayName("Page title should have header text")
     void titleTest() {
