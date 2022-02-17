@@ -1,44 +1,76 @@
-# Project in Allure TestOps with manual & automated tests
-<a target="_blank" href="https://allure.autotests.cloud/project/%s">allure.autotests.cloud/project/%s</a> (ask admin@qa.guru for access)
+# Проект по автоматизации тестирования для компании [Petshop](https://www.petshop.ru)
 
-# Jenkins job
-<a target="_blank" href="https://jenkins.autotests.cloud/job/%s">jenkins.autotests.cloud/job/%s</a>
+## Тестовая модель:
 
+- [x] Title главной страницы
+- [x] Поле поиска
+- [x] Наличие ошибок в консоле
 
-# USAGE examples
+## Используемые технологии и инструменты
 
-### For run remote tests need fill remote.properties or to pass value:
+<a href="https://www.jetbrains.com/idea/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Intelij_IDEA.svg" width="40" height="40"  alt="IDEA"/>
+</a>
+<a href="https://www.java.com/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Java.svg" width="40" height="40"  alt="Java"/>
+</a>
+<a href="https://ru.selenide.org/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Selenide.svg" width="40" height="40"  alt="Selenide"/>
+</a>
+<a href="https://aerokube.com/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Selenoid.svg" width="40" height="40"  alt="Selenoid"/>
+</a>
+<a href="https://gradle.org/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Gradle.svg" width="40" height="40"  alt="Gradle"/>
+</a>
+<a href="https://junit.org/junit5/docs/current/user-guide/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/JUnit5.svg" width="40" height="40"  alt="JUnit 5"/>
+</a>
+<a href="https://allure.qatools.ru/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Allure_Report.svg" width="40" height="40"  alt="Allure SE"/>
+</a>
+<a href="https://qameta.io/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Allure_EE.svg" width="40" height="40"  alt="Allure EE"/>
+</a>
+<a href="https://github.com/QASvetlana">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Github.svg" width="40" height="40"  alt="Github"/>
+</a>
+<a href="https://www.jenkins.io/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Jenkins.svg" width="40" height="40"  alt="Jenkins"/>
+</a>
+<a href="https://web.telegram.org/k/">
+    <img src="https://starchenkov.pro/qa-guru/img/skills/Telegram.svg" width="40" height="40"  alt="Telegram"/>
+</a>
 
-* browser (default chrome)
-* browserVersion (default 89.0)
-* browserSize (default 1920x1080)
-* browserMobileView (mobile device name, for example iPhone X)
-* remoteDriverUrl (url address from selenoid or grid)
-* videoStorage (url address where you should get video)
-* threads (number of threads)
+IntelliJ IDEA, Java, Selenide, Selenoid, Gradle, JUnit5, Allure SE, Allure TestOps, Github, Jenkins, Telegram (reports)
+# Конфигурация для запуска тестов
+Параметры для запуска автотестов в удаленном браузере на билд-сервере проекта
+autotests.cloud задаются в настройках job CI Jenkins в виде Choice Parameter
+и передаются в код проекта через терминал как системные переменные (в фигурных скобках) с помощью следующих команд:
 
-
-Run tests with filled remote.properties:
 ```bash
-gradle clean test
+clean
+test
+-Dbrowser=${BROWSER} // запускаемый браузер
+-DbrowserVersion=${BROWSER_VERSION} // версия браузера
+-DbrowserSize=${BROWSER_SIZE} // размер окна браузера
+-DremoteDriverUrl=https://<username>:<password>@${REMOTE_DRIVER_URL}/wd/hub/ // URL сервера, на котором запускаются тесты
+-DvideoStorage=https://${REMOTE_DRIVER_URL}/video/ // URL сервера с видеофайлами выполнения тестов
+-Dthreads=${THREADS} // число потоков для прогона тестов
+
+allure serve build/allure-results Генерация отчета
 ```
-
-Run tests with not filled remote.properties:
-```bash
-gradle clean -DremoteDriverUrl=https://%s:%s@selenoid.autotests.cloud/wd/hub/ -DvideoStorage=https://selenoid.autotests.cloud/video/ -Dthreads=1 test
-```
-
-Serve report:
-```bash
-allure serve build/allure-results
-```
-
-
-###### For further development there are some example tests in src/test/java/cloud.autotests/tests/demowebshop
-* remove @Disabled("...") annotation to run tests
-```bash
-gradle clean demowebshop
-```
-
-:heart: <a target="_blank" href="https://qa.guru">qa.guru</a><br/>
-:blue_heart: <a target="_blank" href="https://t.me/qa_automation">t.me/qa_automation</a>
+### Для запуска автотестов на удаленной машине использован build server Jenkins
+![image](src/files/jenkins.jpg)
+### Тестовая документация хранится в Allure TestOpts
+![image](src/files/allure testopts.jpg)
+### Отчетность генерируется с помощью Allure reports
+![image](src/files/allure.jpg)
+![image](src/files/allure1.jpg)
+### Интеграция с Jira
+Доступен список тест-кейсов, а так же приложен результат запуска автотестов
+![image](src/files/jira.jpg)
+### Уведомления о результатах тестирования уходят в Telegram
+![image](src/files/telegram.jpg)
+### Видеотчет теста "Поиск товара"
+![image](src/files/video.gif)
