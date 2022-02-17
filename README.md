@@ -64,6 +64,7 @@ allure serve build/allure-results Генерация отчета
 ![image](src/files/jenkins.jpg)
 ### Тестовая документация хранится в Allure TestOpts
 ![image](src/files/allure testopts.jpg)
+
 ### Отчетность генерируется с помощью Allure reports
 ![image](src/files/allure.jpg)
 ![image](src/files/allure1.jpg)
