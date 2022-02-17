@@ -20,7 +20,7 @@ public class SearchTests extends TestBase {
     void searchTest() {
         step("Open url", () ->
                 open(""));
-        step("check city hint", () -> {
+        step("search with value", () -> {
             $(".MuiInputBase-input").setValue("корм для кошек").pressEnter();
             $(".product-list:nth-child(1)").shouldHave(text("кошек"));
 
@@ -33,7 +33,7 @@ public class SearchTests extends TestBase {
     void searchEmptyTest() {
         step("Open url", () ->
                 open(""));
-        step("check city hint", () -> {
+        step("search with empty value", () -> {
             $(".MuiInputBase-input").setValue(" ").pressEnter();
             $(".errortext").shouldHave(text("Пустой поисковый запрос"));
 
